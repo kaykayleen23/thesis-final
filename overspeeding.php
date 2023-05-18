@@ -93,13 +93,14 @@ $id = $_SESSION['vID'];
         </center>
         <div class="block-vweighted block-weighted mt-2">
             <div class="weight-50 px-2 " id="order-2">
-                <div class=" mb-2">
-                    <div class="">
-                        <div class="content-hcenter h-min-100 top-half">
+            <div class="content-hcenter h-min-100 top-half">
                             <div class="">
                                 <h2 class="h3-bold text-center">Logs</h2>
                             </div>
                         </div>
+                <div class=" mb-2" style="overflow: auto; max-height: 400px; margin-bottom: 3rem">
+                    <div class="">
+
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>

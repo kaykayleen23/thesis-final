@@ -207,7 +207,7 @@ $badgeID = mysqli_fetch_array($results);
                                     <h2 class="h3-bold text-center">On Duty</h2>
                                 </div>
                             </div>
-                            <div class="table-container">
+                            <div class="table-container" style="overflow: auto; max-height: 400px; margin-bottom: 3rem">
                                 <table class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
@@ -232,7 +232,7 @@ $badgeID = mysqli_fetch_array($results);
                                 <h2 class="h3-bold text-center">Logs</h2>
                             </div>
                         </div>
-                        <div class="table-container">
+                        <div class="table-container" style="overflow: auto; max-height: 400px;">
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>

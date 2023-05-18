@@ -16,19 +16,25 @@ $result = mysqli_query($conn, $query);
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
      <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
      <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
      <link rel="stylesheet" type="text/css"
           href="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.css" />
      <script type="text/javascript"
           src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js"></script>
-     <link rel="stylesheet" type="text/css"
-          href="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.css" />
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-           <link rel="stylesheet" href="/webapp/css/style.css">
-           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-           <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-           <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" /> 
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+     <link rel="stylesheet" href="/webapp/css/style.css">
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/webapp/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+
 </head>
 
 
@@ -64,6 +70,7 @@ $result = mysqli_query($conn, $query);
                               <thead>
                                    <tr>
                                         <th>ACTION</th>
+                                        <th>VIEW</th>
                                         <th>VIDEO_ID</th>
                                         <th>LICENSE NO</th>
                                         <th>VIOLATION</th>
@@ -94,10 +101,13 @@ $result = mysqli_query($conn, $query);
                                         <input type="hidden" class="" maxlength="256" name="Delete-id" data-name=""
                                         placeholder="" id="input" value="' . $fieldname1 . '" />
                                         <input type="submit" class="btn btn-danger" name="Delete" value="Delete"  data-name="Delete" placeholder="" id="Delete"/></form>';
-
+                                   $viewdata = '<div class="block-weighted block-vweighted mob-mb-1">
+                                        <div class="mb-05 content-hcenter weight-50">
+                                        <button class="btn btn-primary view-video" data-url="' . $row['url'] . '">View</button>';
                                    echo '  
                               <tr>  
-                              <td>' . $editdata . ' ' . $deletedata . '</td>    
+                              <td>' . $editdata . ' ' . $deletedata . '</td>   
+                              <td>' . $viewdata . '</td>    
                                    <td>' . $row['videoID'] . '</td>  
                                    <td>' . $row['licenseNum'] . '</td>   
                                    <td>' . $row['violation'] . '</td>  
@@ -111,7 +121,6 @@ $result = mysqli_query($conn, $query);
                                    <td>' . $row['birthday'] . '</td>    
                                    <td>' . $row['licensePLate'] . '</td>  
                                    <td>' . $row['regNum'] . '</td>  
-								
                                </tr>  
                                ';
                               }
@@ -119,8 +128,13 @@ $result = mysqli_query($conn, $query);
                               ?>
                          </table>
                     </div>
-
-
+                    <center>
+                         <div class="tint">
+                              <div id="myModal" class="modal mt-3 mx-3">
+                                   <!-- Modal content -->
+                              </div>
+                         </div>
+                    </center>
      </main>
      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
      <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
@@ -173,5 +187,76 @@ $result = mysqli_query($conn, $query);
                });
 
           });
+     </script>
+     <!-- Include jQuery library -->
+     <!-- Include Bootstrap JavaScript library -->
+     <script>
+          // Get the modal
+          var modal = document.getElementById("myModal");
+
+          // Get all the "View Data" buttons
+          var viewButtons = document.getElementsByClassName("view-video");
+
+          // Get the <span> element that closes the modal
+          var span = document.getElementsByClassName("close")[0];
+
+          // Function to open the modal and set the video source
+          function openModal(url) {
+               var videoPlayer = document.createElement("video");
+               videoPlayer.setAttribute("controls", "controls");
+               videoPlayer.setAttribute("autoplay", "autoplay");
+
+               var source = document.createElement("source");
+               source.setAttribute("src", url);
+               source.setAttribute("type", "video/mp4");
+
+               videoPlayer.appendChild(source);
+
+               // Remove existing modal content
+               while (modal.firstChild) {
+                    modal.removeChild(modal.firstChild);
+               }
+
+               var modalContent = document.createElement("div");
+               modalContent.setAttribute("class", "content");
+
+               var closeSpan = document.createElement("span");
+               closeSpan.setAttribute("class", "close");
+               closeSpan.innerHTML = "&times;";
+
+               closeSpan.onclick = function () {
+                    modal.style.display = "none";
+               };
+
+               var textParagraph = document.createElement("p");
+
+               modalContent.appendChild(closeSpan);
+               modalContent.appendChild(videoPlayer);
+               modalContent.appendChild(textParagraph);
+
+               modal.appendChild(modalContent);
+
+               modal.style.display = "block";
+          }
+
+          // Attach click event listeners to the "View Data" buttons
+          for (var i = 0; i < viewButtons.length; i++) {
+               viewButtons[i].addEventListener("click", function () {
+                    var url = this.getAttribute("data-url");
+                    openModal(url);
+               });
+          }
+
+          // When the user clicks on <span> (x), close the modal
+          span.onclick = function () {
+               modal.style.display = "none";
+          }
+
+          // When the user clicks anywhere outside of the modal, close it
+          window.onclick = function (event) {
+               if (event.target == modal) {
+                    modal.style.display = "none";
+               }
+          }
      </script>
 </body>

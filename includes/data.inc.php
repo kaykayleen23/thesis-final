@@ -1,7 +1,7 @@
 <?php
 require_once 'dbh.inc.php';
 
-$sql = "SELECT videoID, violation, date_time, status FROM video ORDER BY videoID DESC LIMIT 15";
+$sql = "SELECT videoID, violation, date_time, status FROM video ORDER BY videoID DESC";
 
 // Execute the query
 $result = mysqli_query($conn, $sql);
